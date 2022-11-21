@@ -21,9 +21,13 @@ jobs:
         type: 'zip'
         directory: 'dist'
         filename: 'build.zip'
-    - name: Upload Release
-      uses: ncipollo/release-action@v1
+    - name: Upload Release Archive
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        artifacts: "build.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_name: build.zip
+        asset_content_type: application/zip
+
 
