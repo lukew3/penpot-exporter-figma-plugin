@@ -19,11 +19,11 @@ jobs:
       uses: thedoctor0/zip-release@main
       with:
         type: 'zip'
-        filename: 'release.zip'
-        exclusions: '*.git*'
+        directory: 'dist'
+        filename: 'build.zip'
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "release.zip"
+        artifacts: "build.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
 
